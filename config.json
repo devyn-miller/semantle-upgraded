@@ -24,20 +24,20 @@
     },
     "strings":
     {
-        "pageTitle": "Semantle",
-        "error404": "dunno what you're on about mate",
-        "error500": "OOPSIE WOOPSIE!! Uwu We made a fucky wucky!! A wittle fucko boingo! The code monkeys at our headquarters are working VEWY HAWD to fix this!",
-        "xhrError": "Problem communicating with server",
-        "sseError": "Connection with server lost",
-        "unknownUser": "Do I fuckin' know you cunt?  I don't fuckin' think so.  I don't think I fuckin' know you, cunt",
-        "expiredGame": "Game \"{oldGame}\" has ended.  Please click \"Next Word\" when you are ready to advance to \"{newGame}\"",
-        "emptyName": "You have to actually enter a name",
-        "longName": "Your name may not exceed {maxLength} characters in length.  It's not free file storage",
-        "illegalChars": "Illegal characters in name.  You may use letters, numbers, spaces, and any of the following: '\"-_.,?!",
-        "correctGuess": "Yep, that's the one",
-        "repeatGuess": "If at first you don't succeed...",
-        "unknownWord": "{word} ain't no word I ever heard of",
-        "emptyWord": "Yeah, you have to actually enter a word",
-        "multipleWords": "Slow down there, chief.  One word at a time please"
+        "pageTitle": "Semantle 🌟",
+        "error404": "Oops! We can't seem to find what you're looking for. 🕵️‍♂️",
+        "error500": "Oh no! Something went wrong on our end. We're fixing it as fast as we can! 🛠️",
+        "xhrError": "There seems to be a problem communicating with the server. Please try again later. 📡",
+        "sseError": "It looks like we've lost connection with the server. Please check your connection. 🔌",
+        "unknownUser": "Hmm, we don't recognize you. Could you please log in again? 🧐",
+        "expiredGame": "This game session has ended. Please click \"Next Word\" to continue. 🔄",
+        "emptyName": "Please enter a name to continue. 📝",
+        "longName": "Your name can't be longer than {maxLength} characters. Please shorten it. 📏",
+        "illegalChars": "Your name contains some characters we can't accept. Please use only letters, numbers, spaces, and these symbols: '\"-_.,?! 🚫",
+        "correctGuess": "Correct! You guessed the right word! 🎉",
+        "repeatGuess": "You've already guessed that. Try something different! 🔄",
+        "unknownWord": "We don't recognize the word \"{word}\". Please try another. 🤔",
+        "emptyWord": "Please enter a word to make a guess. 🗣️",
+        "multipleWords": "One word at a time, please! 🙏"
     }
 }
