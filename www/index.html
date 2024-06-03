@@ -20,33 +20,40 @@
         <div>
             <h1>{title}</h1>
             <p>
-                Like <a href="https://www.wordleunlimited.com/">Wordle</a>, but better.
                 The computer chooses a word, and you have to guess it.
             </p>
             <p>
-                Each guess will be rated based on its semantic similarity to the target word.
-                Similarity ranges from -1 (least) to 1 (most,) but be aware that the computer's
-                conception of what exactly "semantic similarity" entails can be kind of, uhhhh,
-                abstruse, so don't be too shocked if you and it aren't always on the same page.
-                Like: a word's antonym isn't going to get a rating of -1, because there are still
-                a whole bunch of ways in which the words <i>are</i> similar, for example: they're
-                both in the same lexical category, and they both occupy a common conceptual space.
-                Even this is anthropomorphizing it too much -- it's an algorithm, dude.  The abstractions
-                which it uses to weigh its judgements are far queerer than we could possibly imagine.
-                Anyway this is all way the christ beyond the scope of what we're doing here so just
-                <a href="https://letmegooglethat.com/?q=word+embedding">Google "word embedding"</a>
-                if you care.
+                Objective: Guess the secret word.
+
+                Make Your Guess:
+                
+                Each guess must be a valid word.
+                Semantle will tell you how semantically similar your guessed word is to the secret word.
+                Understanding Semantic Similarity:
+                
+                The game uses Word2Vec to calculate the semantic similarity between your guess and the secret word.
+                Similarity is based on the meaning and context of words, not their spelling.
+                The highest similarity score is 100, meaning the words are identical and you win.
+                The lowest possible score is -100, but typically, scores won't be lower than -34.
+                Word Types:
+                
+                Secret words can be any part of speech but will always be single words.
+                Avoid focusing only on nouns; consider all types of words.
+                Guesses are case-sensitive since the Word2Vec dataset includes some proper nouns. However, all secret words are lower-case. If your guess matches the secret word except for case, you still win.
+                Getting Close Indicator:
+                
+                If your guess is one of the 1,000 closest words to the target word, its rank will be displayed (with 1000 being the target word itself).
+                If your guess is not within the closest 1,000 words, you are considered "cold".
+                Only "normal" words (non-capitalized, common words) get a ranking. Capitalized, misspelled, or obscure words that might be close will be marked with "????".
+                Example:
+                
+                If the secret word is "happy" and you guess "joyful," you might get a high similarity score.
+                If you guess "sad," the similarity score will be much lower.
+                Tip: Try words with different meanings and parts of speech to find the secret word faster!
+                
+                
             </p>
-            <p>
-                So, yes, right: the game.  You have unlimited guesses, and once you're within the two
-                thousand closest words to the target you'll start earning <i>points</i>.  Correctly
-                guessing the target word gets you <i>a thousand</i> of the fuckers.  Or you
-                can give up at any point and advance to the next word with whatever score you've
-                managed to accumulate so far.  There's no going back, though, so, you know...
-                let's not be hasty, yeah?
-            </p>
-            <p>
-                There's a new list of words to guess every day.  Good luck.
+
             </p>
         </div>
         <hr>
@@ -72,9 +79,6 @@
             </table>
         </div>
         <hr>
-        <div>
-            Based on the <a href="https://semantle.novalis.org/">original Semantle</a> (source code at <a href="https://gitlab.com/novalis_dt/semantle">GitLab</a>)
-            <br/>Source code for this version available at <a href="https://github.com/AlexFreeland/semantle">GitHub</a>
-        </div>
+
     </body>
 </html>
