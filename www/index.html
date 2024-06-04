@@ -3,16 +3,56 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>{title}</title>
+        <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
         <script src="semantle.js"></script>
         <style type="text/css">
-            *
-            {
-                font-family: "Courier New", Courier, monospace;
-                line-height: 1.5em;
+            body {
+                font-family: 'Roboto', sans-serif;
+                line-height: 1.6em;
+                color: #333;
+                background-color: #f4f4f9;
+                max-width: 60em;
+                margin: auto;
+                padding: 1em;
             }
-            th,td
-            {
-                padding-right: 3em;
+            h1, h3 {
+                color: #2c3e50;
+            }
+            th, td {
+                padding: 0.5em 1em;
+            }
+            input[type="text"], button {
+                padding: 0.8em;
+                border: none;
+                border-radius: 5px;
+                margin-right: 0.5em;
+            }
+            button {
+                background-color: #3498db;
+                color: white;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+                cursor: pointer;
+            }
+            button:hover {
+                background-color: #2980b9;
+            }
+            a {
+                color: #3498db;
+                text-decoration: none;
+            }
+            a:hover {
+                text-decoration: underline;
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+            th {
+                background-color: #ecf0f1;
+                color: #7f8c8d;
+            }
+            tr:nth-child(even) {
+                background-color: #fdfbfb;
             }
         </style>
     </head>
@@ -64,7 +104,6 @@
                 <p id="message"></p>
                 <div>
                     <div id="scoreInfo"></div>
-                    <div>Click <a href="/leaderboard">here</a> to see the leaderboard.</div>
                 </div>
             </div>
             <table id="history">

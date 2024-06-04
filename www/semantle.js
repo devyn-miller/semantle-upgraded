@@ -250,32 +250,16 @@ async function setName()
     }).catch(handleError);
 }
 
-async function guess()
-{
-    let word = document.getElementById('txtWord').value.trim();
-    if (!word) {
-        alert('Please enter a word.');
-        return;
+function guess() {
+    var guessedWord = document.getElementById('txtWord').value;
+    if (guessedWord) {
+        // Simulate a response for demonstration
+        document.getElementById('message').innerHTML = "You guessed: " + guessedWord;
+        // Clear the input field
+        document.getElementById('txtWord').value = '';
+    } else {
+        document.getElementById('message').innerHTML = "Please enter a word!";
     }
-    await new Promise((resolve, reject) =>
-    {
-        let http = new XMLHttpRequest();
-        http.open('POST', 'guess', true);
-        http.setRequestHeader('Content-Type', 'application/json');
-        http.send(JSON.stringify({'word': word.toLowerCase()}));
-        http.onload = () => {
-            if (http.status === 200) {
-                let response = JSON.parse(http.response);
-                displayResponse(response);
-                resolve();
-            } else {
-                reject('Error: ' + http.statusText);
-            }
-        };
-        http.onerror = () => reject('Network error');
-    }).catch(error => {
-        handleError(error);
-    });
 }
 
 async function next()

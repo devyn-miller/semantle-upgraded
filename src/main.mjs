@@ -116,12 +116,13 @@ async function initServer()
 		'/guess': async (req, res) =>
 		{
 			let userID = parseCookies(req)['user_id'];
-			let word = JSON.parse(await parseBody(req)).word;
+			let body = await parseBody(req);
+			let word = JSON.parse(body).word;
 
-			let similarity = await semantle.guess(userID, word);
+			let response = await semantle.guess(userID, word);
 
 			res.writeHead(200, {'Content-Type': 'application/json'});
-			res.end(JSON.stringify(similarity));
+			res.end(JSON.stringify(response));
 		},
 		'/next': async (req, res) =>
 		{
