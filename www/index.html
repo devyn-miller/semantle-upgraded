@@ -19,42 +19,40 @@
     <body onload="initialize()" style="max-width: 60em;">
         <div>
             <h1>{title}</h1>
-            <p>
-                The computer chooses a word, and you have to guess it.
-            </p>
-            <p>
-                Objective: Guess the secret word.
-
-                Make Your Guess:
-                
-                Each guess must be a valid word.
-                Semantle will tell you how semantically similar your guessed word is to the secret word.
-                Understanding Semantic Similarity:
-                
-                The game uses Word2Vec to calculate the semantic similarity between your guess and the secret word.
-                Similarity is based on the meaning and context of words, not their spelling.
-                The highest similarity score is 100, meaning the words are identical and you win.
-                The lowest possible score is -100, but typically, scores won't be lower than -34.
-                Word Types:
-                
-                Secret words can be any part of speech but will always be single words.
-                Avoid focusing only on nouns; consider all types of words.
-                Guesses are case-sensitive since the Word2Vec dataset includes some proper nouns. However, all secret words are lower-case. If your guess matches the secret word except for case, you still win.
-                Getting Close Indicator:
-                
-                If your guess is one of the 1,000 closest words to the target word, its rank will be displayed (with 1000 being the target word itself).
-                If your guess is not within the closest 1,000 words, you are considered "cold".
-                Only "normal" words (non-capitalized, common words) get a ranking. Capitalized, misspelled, or obscure words that might be close will be marked with "????".
-                Example:
-                
-                If the secret word is "happy" and you guess "joyful," you might get a high similarity score.
-                If you guess "sad," the similarity score will be much lower.
-                Tip: Try words with different meanings and parts of speech to find the secret word faster!
-                
-                
-            </p>
-
-            </p>
+            <h3>How to Play Semantle</h3>
+            <p><strong>Objective:</strong> Guess the secret word.</p>
+            <ol>
+                <li><strong>Make Your Guess:</strong>
+                    <ul>
+                        <li>Each guess must be a valid word.</li>
+                        <li>Semantle will tell you how semantically similar your guessed word is to the secret word.</li>
+                    </ul>
+                </li>
+                <li><strong>Understanding Semantic Similarity:</strong>
+                    <ul>
+                        <li>The game uses Word2Vec to calculate the semantic similarity between your guess and the secret word.</li>
+                        <li>Similarity is based on the meaning and context of words, not their spelling.</li>
+                        <li>The highest similarity score is 100, meaning the words are identical and you win.</li>
+                        <li>The lowest possible score is -100, but typically, scores won't be lower than -34.</li>
+                    </ul>
+                </li>
+                <li><strong>Word Types:</strong>
+                    <ul>
+                        <li>Secret words can be any part of speech but will always be single words.</li>
+                        <li>Avoid focusing only on nouns; consider all types of words.</li>
+                        <li>Guesses are case-sensitive since the Word2Vec dataset includes some proper nouns. However, all secret words are lower-case. If your guess matches the secret word except for case, you still win.</li>
+                    </ul>
+                </li>
+                <li><strong>Getting Close Indicator:</strong>
+                    <ul>
+                        <li>If your guess is one of the 1,000 closest words to the target word, its rank will be displayed (with 1000 being the target word itself).</li>
+                        <li>If your guess is not within the closest 1,000 words, you are considered "cold".</li>
+                        <li>Only "normal" words (non-capitalized, common words) get a ranking. Capitalized, misspelled, or obscure words that might be close will be marked with "????".</li>
+                    </ul>
+                </li>
+            </ol>
+            <p><strong>Example:</strong> If the secret word is "happy" and you guess "joyful," you might get a high similarity score. If you guess "sad," the similarity score will be much lower.</p>
+            <p><strong>Tip:</strong> Try words with different meanings and parts of speech to find the secret word faster!</p>
         </div>
         <hr>
         <div style="padding: 1em 0 1em 0;">
@@ -79,6 +77,5 @@
             </table>
         </div>
         <hr>
-
     </body>
 </html>
