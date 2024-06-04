@@ -49,8 +49,6 @@ async function initServer()
 
 	let indexHtml = await fs.promises.readFile('www/index.html', { encoding: 'utf-8' });
 	indexHtml = indexHtml.replaceAll('{title}', config.strings.pageTitle);
-	let leaderboardHtml = await fs.promises.readFile('www/leaderboard.html', { encoding: 'utf-8' });
-	leaderboardHtml = leaderboardHtml.replaceAll('{title}', config.strings.pageTitle);
 	let semantleJs = await fs.promises.readFile('www/semantle.js', { encoding: 'utf-8' });
 	semantleJs = semantleJs.replace('{xhrError}', config.strings.xhrError);
 	semantleJs = semantleJs.replace('{sseError}', config.strings.sseError);
@@ -63,11 +61,6 @@ async function initServer()
 		{
 			res.writeHead(200, {'Content-Type': 'text/html'});
 			res.end(indexHtml);
-		},
-		'/leaderboard': async (req, res) =>
-		{
-			res.writeHead(200, {'Content-Type': 'text/html'});
-			res.end(leaderboardHtml);
 		},
 		'/semantle.js': async (req, res) =>
 		{
@@ -147,14 +140,6 @@ async function initServer()
 
 			res.writeHead(200, {'Content-Type': 'application/json'});
 			res.end(JSON.stringify(response));
-		},
-		'/scores': async (req, res) =>
-		{
-			let userID = parseCookies(req)['user_id'];
-			let result = await semantle.getLeaderboard(userID);
-
-			res.writeHead(200, {'Content-Type': 'application/json'});
-			res.end(JSON.stringify(result));
 		},
 		'404': async (req, res) =>
 		{

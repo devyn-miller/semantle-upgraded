@@ -253,20 +253,29 @@ async function setName()
 async function guess()
 {
     let word = document.getElementById('txtWord').value.trim();
-    
+    if (!word) {
+        alert('Please enter a word.');
+        return;
+    }
     await new Promise((resolve, reject) =>
     {
         let http = new XMLHttpRequest();
         http.open('POST', 'guess', true);
-        http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        http.onload = () => resolve(http.response);
-        http.onerror = () => reject(xhrError);
+        http.setRequestHeader('Content-Type', 'application/json');
         http.send(JSON.stringify({'word': word.toLowerCase()}));
-    }).then((res) =>
-    {
-        let response = JSON.parse(res);
-        displayResponse(response);
-    }).catch(handleError);
+        http.onload = () => {
+            if (http.status === 200) {
+                let response = JSON.parse(http.response);
+                displayResponse(response);
+                resolve();
+            } else {
+                reject('Error: ' + http.statusText);
+            }
+        };
+        http.onerror = () => reject('Network error');
+    }).catch(error => {
+        handleError(error);
+    });
 }
 
 async function next()
@@ -286,31 +295,4 @@ async function next()
             displayResponse({status: 'NOK', message: 'Sorry, you have reached the end of today\'s words.  Please try again tomorrow.'});
         }
     }).catch(handleError);
-}
-
-async function populateLeaderboard()
-{
-    await new Promise((resolve, reject) =>
-    {
-        let http = new XMLHttpRequest();
-        http.open('GET', 'scores', true);
-        http.onload = () => resolve(http.response);
-        http.onerror = () => reject(xhrError);
-        http.send();
-    }).then((res) =>
-    {
-        let users = JSON.parse(res);
-
-        for (let user of users)
-        {
-            let leaderboard = document.getElementById('leaderboard');
-            let row = leaderboard.insertRow();
-            row.insertCell(0).innerText = user.name;
-            row.insertCell(1).innerText = user.score;
-            if (user.isYou)
-            {
-                row.style = 'background: #ffff00';
-            }
-        }
-    }).catch(alert);    //TODO: probably not this
 }
